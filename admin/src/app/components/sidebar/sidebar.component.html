@@ -1,0 +1,147 @@
+<!-- Navbar-->
+<header class="navbar navbar-expand navbar-light fixed-top navbar-box-shadow  bg-slate-50 px-3 px-lg-4 h-24"
+  data-scroll-header data-fixed-element>
+
+  <ul class="navbar-nav ml-auto d-none d-lg-flex align-items-center mx-5">
+    <div class="relative inline-block text-left" (click)="toggleDropdown()">
+      <button type="button"
+        class="bg-slate-200 border-4 border-slate-100 rounded-full focus:outline-none flex items-center p-3">
+        <img src="../../../assets/img/admin_icon.png" alt="Imagen" width="40" class="">
+      </button>
+
+      <div *ngIf="isOpen" (clickOutside)="closeDropdown()"
+        class="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg animate-fade-in">
+        <div class="py-1">
+          <div class="flex items-center mx-2">
+            <img src="../../../assets/img/admin_icon.png" alt="Imagen" width="40" class="mr-3">
+            <div class="flex-col">
+              <p class="my-0 font-extrabold text-lg" style="font-family: 'Times New Roman', Times, serif;">Renzo
+                Tinajeros</p>
+              <p class="my-0 text-sm" style="color: #69707a; font-family: 'Courier New', Courier, monospace;">
+                renzo960@hotmail.com</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-150 mt-2"></div>
+          <div
+            class="flex items-center rounded w-full hover:bg-gray-100 cursor-pointer  active:bg-blue-600 active:text-white">
+            <i class="bx bx-user pl-3 pr-1"></i>
+            <a href="#"
+              class="inline-block py-2 text-sm w-full text-gray-700 no-underline hover:text-gray-700 active:bg-blue-600 active:text-white"
+              data-toggle="modal" data-target="#Perfil">
+              Mi Perfil
+            </a>
+          </div>
+          <div
+            class="flex items-center rounded hover:bg-gray-100 cursor-pointer  w-full active:bg-red-600 active:text-white">
+            <i class="cxi-logout pl-3 pr-1"></i>
+            <a href="#"
+              class="inline-block py-2 text-sm w-full text-gray-700 no-underline hover:text-gray-700 active:bg-red-600 active:text-white">
+              Cerrar Sesión
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ul>
+  <!-- Side navigation (Off-canvas)-->
+  <aside class="cs-offcanvas cs-offcanvas-expand bg-dark" id="componentsNav">
+    <div class="cs-offcanvas-cap d-none d-lg-block py-1 h-24">
+      <a class="navbar-brand" [routerLink]="['/inicio']" id="header-left">
+        <img src="../../../assets/img/Ferreteria_logo.png" alt="Createx" width="50">
+        <p class="py-2">Ferrelomas</p>
+      </a>
+    </div>
+    <div class="cs-offcanvas-cap d-flex d-lg-none">
+      <div class="d-flex align-items-center mt-1">
+        <h5 class="text-light mb-0 mr-3">Menu</h5>
+        <span class="badge badge-warning">Docs</span>
+      </div>
+      <button class="close text-light" type="button" data-dismiss="offcanvas" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light">
+      <a class="btn btn-primary btn-block mr-3 px-4" href="index.html"><i class="cxi-eye mt-n1 mr-2"></i>Preview</a>
+      <a class="btn btn-success btn-block mt-0 px-4" href="../components/typography.html"><i
+          class="cxi-layouts mt-n1 mr-2"></i>Components</a>
+    </div>
+    <div class="cs-offcanvas-body px-0 pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
+      <h6 class="font-size-lg text-light px-4 mt-2 mb-3">Mis Componentes</h6>
+      <hr class="hr-gradient hr-light mb-2 opacity-25">
+      <nav class="nav">
+        <a class="nav-link px-4" [routerLink]="['/inicio']" routerLinkActive="active"><i
+            class='bx bx-home'></i>Inicio</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/clientes']" routerLinkActive="active"><i
+            class='bx bxs-user'></i>Cliente</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/productos/']" routerLinkActive="active"><i
+            class='bx bxs-package'></i>Productos</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/cupones/']" routerLinkActive="active"><i
+            class='bx bxs-coupon'></i>Cupones</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/descuentos/']" routerLinkActive="active"><i
+            class='bx bx-money-withdraw'></i>Descuentos</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/contactos/']" routerLinkActive="active"><i
+            class='bx bxs-chat'></i>Mensajes</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/ventas/']" routerLinkActive="active"><i
+            class='bx bxs-coin-stack'></i>Ventas</a>
+        <a class="nav-link px-4" [routerLink]="['/panel/configuraciones/']" routerLinkActive="active"><i
+            class='bx bxs-buildings'></i>Configuraciones</a>
+      </nav>
+    </div>
+  </aside>
+</header>
+
+<!-- Modal -->
+<div div class="modal fade" tabindex="-1" style="display:none;" aria-hidden="true" id="Perfil">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hola Administrador</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span
+            aria-hidden="true">x</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="flex justify-between w-full">
+          <!-- Columna izquierda con botones -->
+          <div class="w-1/3 relative">
+            <button type="button" class="btn btn-primary w-3/4 p-3 my-3">Registrar Administrador</button>
+            <button type="button" class="btn btn-secondary w-3/4 p-3 my-3">Editar Administrador</button>
+            <!-- Borde vertical -->
+            <div class="border-l border-gray-300 absolute top-0 bottom-0 right-0 left-auto mx-4 h-full"></div>
+          </div>
+          
+
+          <!-- Columna derecha con campos de formulario -->
+            <form class="grid grid-cols-2 gap-4 w-2/3">
+              <div class="flex flex-col p-4"> <!-- Añadí padding para mostrar los bordes -->
+                <div class="mb-4">
+                  <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre:</label>
+                  <input type="text" class="form-input mt-1 block" id="nombre">
+                </div>
+                <div class="mb-4">
+                  <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido:</label>
+                  <input type="text" class="form-input mt-1 block border-black" id="apellido">
+                </div>
+                <div class="mb-4">
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                  <input type="text" class="form-input mt-1 block" id="email">
+                </div>
+              </div>
+              <div class="flex flex-col w-1/2 p-4"> <!-- Añadí padding para mostrar los bordes -->
+                <div class="mb-4">
+                  <label for="contraseña" class="block text-sm font-medium text-gray-700">Contraseña:</label>
+                  <input type="text" class="form-input mt-1 block" id="contraseña">
+                </div>
+                <div class="mb-4">
+                  <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono:</label>
+                  <input type="text" class="form-input mt-1 block" id="telefono">
+                </div>
+                <div class="mb-4">
+                  <label for="dni" class="block text-sm font-medium text-gray-700">DNI:</label>
+                  <input type="text" class="form-input mt-1 block" id="dni">
+                </div>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+
+.bg {
+    background-image: url("https://blog.comparasoftware.com/wp-content/uploads/2020/10/Gestion_de_inventarios-1200x675.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.info i{
+    font-size: 30px;
+    border-radius: 50%;
+    background-color:#007bff ;
+    color: white;
+    padding: 8px;  
+    box-shadow: 0 0 8px #007bff; /* Box shadow con desplazamiento horizontal 0, desplazamiento vertical 0, desenfoque 10px y color negro con opacidad 0.5 */
+}
+
+
+
+.container{
+    margin-top: 100px !important;
+}
+.icon_admin{
+
+    border: 2px solid black; /* Define un borde negro de 2px */
+    border-radius: 50%; /* Aplica un radio de borde de 50% para crear un borde redondeado */
+}

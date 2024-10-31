@@ -1,0 +1,56 @@
+
+<body class="cuerpo">
+    <div class="container w-150 bg-primary mt-5 rounded shadow">
+        <div class="row align-items-lg-stretch">
+            <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
+            </div>
+            <div class="col bg-white p-5 rounded-end">
+                <div class="text-end">
+                    <img src="../../../assets/img/admin_icon.png" alt="" width="55px" class="icon_admin">
+                </div>
+
+                <h2 class="fw-bold text-center py-5">Bienvenido Administrador</h2>
+
+                <!-- Login -->
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Correo electrónico:</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="user.email" required="">
+                    </div>
+
+                    <label for="password" class="form-label">Contraseña:</label>
+                    <div class="mb-4 input-group">
+                        <input type="password" id="txtPassword" class="form-control" name="password" [(ngModel)]="user.password" required="" style="height: 45px;">
+                        <button id="show_password" class="btn btn-primary" type="button" (click)="mostrar_password()">
+                            <span class="fa fa-eye-slash icon"></span> </button>
+                    </div>
+
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" name="connected" class="form-check-input" id="connected" [(ngModel)]="isChecked" (change)="onCheckboxChange()">
+                        <label for="connected" class="form-check-label">Mantenerme conectado</label>
+                    </div>
+
+                    <div class="d-grid">
+                        <input class="btn btn-primary w-100" type="submit" value="Ingresar" name="accion">
+                    </div>
+                    <div class="info">
+                        <div class="row text-center justify-content-center mt-4">
+                            <div class="col-12">Nos puedes encontrar en las Redes Sociales</div>
+                            <div class="row my-3 justify-content-center">
+                                <div class="col-auto">
+                                    <i class="cxi-instagram mx-2 my-1"></i>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="cxi-facebook mx-2 my-1"></i>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="cxi-twitter mx-2 my-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

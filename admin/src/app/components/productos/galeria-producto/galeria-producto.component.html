@@ -1,0 +1,130 @@
+<app-sidebar></app-sidebar>
+
+<div class="border-bottom pt-3 mt-2 mb-5">
+  <h1 class="mt-2 mt-md-4 mb-3 pt-5">Productos</h1>
+  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+    <p class="text-muted">En éste módulo se puede agregar las imágenes para la galeria del Producto</p>
+    <a [routerLink]="['/panel/productos']" class="btn btn-info mb-3"> Regresar <i class="cxi-arrow-reload"></i></a>
+  </div>
+</div>
+<div class="card box-shadow-sm">
+  <div class="card-header">
+    <h5 style="margin-bottom: 0px;">Galería de Productos</h5>
+  </div>
+  <div class="card-body">
+    <div>
+      <div class="row mb-5">
+        <div class="col-md-4" style="padding-right: 0px; height: 10%;">
+          <img [src]="url + 'obtener_portada/' + producto.portada" class="img-thumbnail rounded-0" alt="Square image"
+            style="height: 300px;width: 100%; padding:30px;">
+        </div>
+        <div class="col-md-8" style="padding-left: 0px;;">
+          <div class="card" style=" background: #f5eeee; height: 300px;">
+            <div class="card-body">
+              <h3 class="card-product-title text-truncate mb-2">
+                <p style="font-size: 30px; padding: 0; margin-bottom: 10px;">{{producto.titulo}}</p>
+                <div class="pe-3" style="height: 11vh; overflow-y: auto; white-space: normal;" data-simplebar
+                  data-simplebar-auto-hide="false">
+                  <p class="text-muted">{{producto.descripcion}}</p>
+                </div>
+                <div class="d-flex align-items-center" style="position: relative; top: 30px;">
+                  <span class="h5 d-inline-block success" style="font-size: 30px; font-weight: 900;">S/
+                    {{producto.precio.toFixed(2)}}</span>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row align-items-center justify-content-center">
+        <div class="col-md-12"> <!-- Utilizo col-md-12 para ocupar todo el ancho del contenedor -->
+          <label class="col-md-3 col-form-label font-weight-medium" for="text-input"></label>
+          <div class="col-md-9 mx-auto">
+            <div class="input-group">
+              <input id="input-img" class="form-control" (change)="fileChangeEvent($event)" type="file">
+              <ng-container *ngIf="file !=undefined">
+                <button class="btn btn-primary" type="button" (click)="subir_imagen()">Subir</button>
+                <button *ngIf="load_btn" type="button" class="btn btn-primary">
+                  <span class="spinner-grow spinner-grow-sm me-2" role="status" aria-hidden="true"></span>
+                  Subiendo...
+                </button>
+              </ng-container>
+              <ng-container *ngIf="file ==undefined">
+                <button class="btn btn-primary" type="button" disabled>Subir</button>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-md-9 mx-auto">
+            <div class="table-responsive mt-3">
+              <table class="table table-sm table-bordered" *ngIf="producto.galeria">
+                <thead class="thead-dark">
+                  <tr class="text-center">
+                    <th>Imágen</th>
+                    <th>Operaciones</th>
+                  </tr>
+                </thead>
+                <ng-container *ngIf="producto.galeria.length ==0">
+                  <tbody>
+                    <tr>
+                      <td colspan="2" class="text-center">
+                        <span class="text-muted">No hay Imágenes disponibles</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </ng-container>
+                <ng-container>
+                  <tbody *ngFor="let item of producto.galeria; let indice= index">
+                    <tr>
+                      <td class="text-center">
+                        <p class="text-center">
+                          <img [src]="url + 'obtener_portada/' + item.imagen" alt="" style="width: 80px">
+                        </p>
+                      </td>
+                      <td class="text-center">
+                        <a style="cursor: pointer; padding: 3px 3px;" class="btn btn-danger" data-toggle="modal"
+                          [attr.data-target]="'#delete-'+item._id">
+                          <i style="font-size: 35px;" class='bx bx-trash'></i>
+                        </a>
+                      </td>
+                    </tr>
+      
+                    <!-- Modal markup -->
+                    <div class="modal fade" tabindex="-1" style="display:none;" aria-hidden="true"
+                      id="delete-{{item._id}}">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Confirmación de eliminación de Imágen</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"> <span
+                                aria-hidden="true">x</span></button>
+                          </div>
+                          <div class="modal-body">
+                            <p class="fs-sm">¿Desea eliminar esta imágen?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-sm" type="button"
+                              data-dismiss="modal">Cancelar</button>
+                            <button *ngIf="!load_btn_eliminar" type="button" class="btn btn-danger btn-shadow btn-sm"
+                              (click)="eliminar(item._id)" type="button">Si, Eliminar</button>
+                            <button *ngIf="load_btn_eliminar" type="button" class="btn btn-secondary" disabled>
+                              <span class="spinner-grow spinner-grow-sm me-2" role="status" aria-hidden="true"></span>
+                              Eliminando..
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tbody>
+                </ng-container>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+
+</div>

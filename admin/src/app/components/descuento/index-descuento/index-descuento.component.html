@@ -1,0 +1,124 @@
+<app-sidebar></app-sidebar>
+<!-- Page title-->
+<div class="border-bottom pt-3 mt-2 mb-5">
+  <h1 class="mt-2 mt-md-4 mb-3 pt-5">Descuentos</h1>
+  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+    <p class="text-muted">Este módulo lista todos los descuentos de la ferreteria.</p>
+    <p class="font-size-sm font-weight-medium pl-md-4">
+      <a class="text-nowrap" [routerLink]="['/panel/descuentos/registro']" class="btn btn-success">Registrar nuevo<i
+          class="cxi-angle-right font-size-base align-middle ml-1"></i></a>
+    </p>
+  </div>
+</div>
+
+<div class="card box-shadow-sm">
+  <div class="card-header">
+    <h5 style="margin-bottom: 0px;">Filtro de Descuentos</h5>
+  </div>
+  <div class="card-header">
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Titulo del Descuento" name="filtro" [(ngModel)]="filtro">
+                <button class="btn btn-primary" type="button" (click)="filtrar()">Buscar</button>
+                <button class="btn btn-secondary" type="button" (click)="resetear()">Resetear</button>
+            </div>
+          </div> 
+    </div>
+</div>
+
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Titulo</th>
+            <th>Descuento</th>
+            <th>Vigencia</th>
+            <th>Estado</th>
+            <th>OP</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="load_data">
+           <tr>
+            <td class="text-center " colspan="7">
+              <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden"></span>
+              </div>
+            </td>
+           </tr>
+        </tbody>
+        <ng-container *ngIf="!load_data">
+            <ng-container *ngIf="descuentos.length ==0">
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <span class="text-muted"> No se encontraron registros</span>
+                    </td>   
+                </tr>
+            </ng-container>
+            <ng-container *ngIf="descuentos.length >=1">
+                <tbody *ngFor="let item of descuentos | slice: (page-1)*pageSize : (page-1)* pageSize + pageSize;">
+                    <tr>
+                      <td>
+                        <h6 style="padding-bottom: 0; margin-bottom: 0;">
+                          <img style="width: 50px;" [src]="url + 'obtener_banner_descuento/' + item.banner" class="img-thumbnail rounded-0" alt="No hay Imagen">
+                          {{item.titulo}}
+                        </h6>
+                      </td>
+                      <td>{{item.descuento}}%</td>
+                      <td>{{item.fecha_inicio }} || {{item.fecha_fin}}</td>
+                      <td>
+                        <span class="badge bg-primary p-2" *ngIf="item.estado == 'Proximamente' ">{{item.estado}}</span>
+                        <span class="badge bg-danger p-2" *ngIf="item.estado == 'Expirado' ">{{item.estado}}</span>
+                        <span class="badge bg-success p-2" *ngIf="item.estado == 'En progreso' ">{{item.estado}}</span>
+                      </td>
+                      <td>
+                        <div class="btn-group dropdown">
+                          <button class="btn btn-outline-secondary  btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Opciones
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" [routerLink]="['/panel/descuentos', item._id]">Editar Descuento</a>
+                            <a class="dropdown-item" style="cursor: pointer;" data-toggle="modal" [attr.data-target]="'#delete-'+item._id">Eliminar Descuento</a>                
+                          </div>
+                        </div>
+                         <!-- Modal markup -->
+                         <div class="modal fade" tabindex="-1" style="display:none;" aria-hidden="true"  id="delete-{{item._id}}">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Confirmación de eliminación de descuento</h5>
+                                <button  class="close" type="button"  data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">x</span></button>
+                              </div>
+                              <div class="modal-body">
+                                <p class="fs-sm"><b>{{item.titulo}}</b> ,¿Desea eliminar este descuento?</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                                <button *ngIf="!load_btn" type="button" class="btn btn-danger btn-shadow btn-sm" (click)="eliminar(item._id)" type="button">Si, Eliminar</button>
+                                <button *ngIf="load_btn" type="button" class="btn btn-secondary" disabled>
+                                  <span class="spinner-grow spinner-grow-sm me-2" role="status" aria-hidden="true"></span>
+                                  Eliminando..
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>               
+            </ng-container>
+
+        </ng-container>
+        
+      </table>
+    </div>
+  </div>
+  <div class="card-footer">
+   <ngb-pagination 
+        [(page)]="page" [pageSize]="pageSize" [collectionSize]="descuentos.length">
+   </ngb-pagination>
+  </div>
+</div>
