@@ -98,8 +98,8 @@ Este proyecto está licenciado bajo la [Nombre de la licencia].
 
 ## 📬 Contacto
 Para dudas, sugerencias o soporte, puedes contactarnos a:
-- Correo: [correo@ejemplo.com]
-- GitHub: [Perfil o repositorio]
+- Correo: [jchungazap@gmail.com]
+- GitHub: [[Perfil o repositorio](https://github.com/JeffCode2022)]
 
 ## 📝 Notas Adicionales
 - Asegúrate de tener las versiones correctas de Angular y Node.js.
