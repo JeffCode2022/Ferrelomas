@@ -1,50 +1,58 @@
-# Sistema de Tienda y Administración
+# 🛒 Sistema de Tienda y Administración
 
-## Descripción General
-Este proyecto es un sistema completo de tienda y administración que incluye múltiples módulos para gestionar diferentes aspectos del negocio. El sistema está dividido en varios componentes principales:
+## 📌 Descripción General
+Este proyecto es un sistema integral de tienda en línea con panel de administración, diseñado para gestionar distintos aspectos de un negocio. La solución está compuesta por múltiples módulos que trabajan de forma conjunta para ofrecer una experiencia completa tanto para el cliente como para el administrador.
 
-### Componentes Principales
-- **Frontend de Tienda**: Interfaz para clientes
-- **Panel de Administración**: Panel de control para administradores
-- **Backend**: Servidor y API del sistema
-- **Sistema de Rutas**: Gestión de rutas y navegación
+## 🧩 Componentes del Sistema
+- **Frontend de Tienda**: Interfaz de usuario para clientes, desarrollada con Angular.
+- **Panel de Administración**: Herramienta de gestión para administradores.
+- **Backend**: API y lógica del servidor para manejar datos y operaciones del sistema.
+- **Sistema de Rutas**: Control de navegación entre módulos y componentes.
 
-## Estructura del Proyecto
+## 📁 Estructura del Proyecto
 ```
-├── admin/           # Panel de administración
-├── back/           # Backend del sistema
-├── tienda/         # Frontend de la tienda
-├── ruta/           # Sistema de rutas
-└── node_modules/   # Dependencias del proyecto
+├── admin/           # Panel de administración (Angular)
+├── back/            # Backend del sistema (Node.js, Express, etc.)
+├── tienda/          # Frontend de la tienda (Angular)
+├── ruta/            # Gestión de rutas y navegación
+└── node_modules/    # Dependencias del proyecto
 ```
 
-## Tecnologías Utilizadas
-- Frontend: Angular con ng-bootstrap
-- Backend: [Especificar tecnología del backend]
-- Base de datos: [Especificar base de datos]
+## ⚙️ Tecnologías Utilizadas
+- **Frontend**: Angular + ng-bootstrap
+- **Backend**: [Especificar tecnología: Node.js, Express, NestJS, etc.]
+- **Base de Datos**: [Especificar: MySQL, PostgreSQL, MongoDB, etc.]
+- **Control de versiones**: Git
 
-## Requisitos Previos
-- Node.js (versión [especificar])
-- [Otros requisitos específicos]
+## ✅ Requisitos Previos
+- Node.js (vXX.X.X)
+- Angular CLI
+- [Otros requisitos: MongoDB instalado, variables de entorno, etc.]
 
-## Instalación
+## 🚀 Instalación
 
-1. Clonar el repositorio:
+1. **Clona el repositorio:**
 ```bash
 git clone [URL del repositorio]
 ```
 
-2. Instalar dependencias:
+2. **Instala las dependencias principales:**
 ```bash
 npm install
 ```
 
-3. Configurar variables de entorno:
-[Instrucciones de configuración]
+3. **Configura las variables de entorno:**
+> Crea un archivo `.env` en el directorio del backend con las siguientes variables:
+```
+DB_HOST=...
+DB_USER=...
+DB_PASSWORD=...
+PORT=...
+```
 
-## Configuración del Entorno de Desarrollo
+## 🧪 Entorno de Desarrollo
 
-### Frontend (Tienda)
+### Tienda (Frontend Cliente)
 ```bash
 cd tienda
 npm install
@@ -61,24 +69,39 @@ ng serve
 ### Backend
 ```bash
 cd back
-[Instrucciones específicas del backend]
+npm install
+npm run dev
 ```
 
-## Características Principales
-- [Listar características principales del sistema]
-- [Módulos disponibles]
-- [Funcionalidades clave]
+> Asegúrate de tener la base de datos configurada y corriendo antes de iniciar el backend.
 
-## Contribución
-[Instrucciones para contribuir al proyecto]
+## 🌟 Características del Sistema
+- Gestión de productos, categorías y stock
+- Carrito de compras y proceso de pago
+- Registro e inicio de sesión de usuarios
+- Panel de administración con dashboard de ventas
+- CRUD de productos, usuarios y órdenes
+- Control de roles y permisos
+- Reportes y estadísticas (opcional)
 
-## Licencia
-[Especificar tipo de licencia]
+## 🤝 Contribución
+¡Las contribuciones son bienvenidas! Si deseas colaborar:
 
-## Contacto
-[Información de contacto del equipo]
+1. Haz un fork del proyecto
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`)
+3. Realiza tus cambios y haz commit (`git commit -m 'Agrega nueva funcionalidad'`)
+4. Haz push a tu rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
 
-## Notas Adicionales
-- [Cualquier información adicional relevante]
-- [Consideraciones especiales]
-- [Enlaces útiles]
+## 📄 Licencia
+Este proyecto está licenciado bajo la [Nombre de la licencia].
+
+## 📬 Contacto
+Para dudas, sugerencias o soporte, puedes contactarnos a:
+- Correo: [correo@ejemplo.com]
+- GitHub: [Perfil o repositorio]
+
+## 📝 Notas Adicionales
+- Asegúrate de tener las versiones correctas de Angular y Node.js.
+- Puedes utilizar herramientas como Postman para probar los endpoints del backend.
+- Verifica las rutas en el archivo de configuración de navegación si deseas modificar el flujo del sistema.
